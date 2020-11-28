@@ -15,20 +15,32 @@ project "Sandbox"
 
 	includedirs
 	{
-		"%{wks.location}/Hazel/vendor/spdlog/include",
+		-- "%{wks.location}/Hazel/vendor/spdlog/include",
 		"%{wks.location}/Hazel/src",
-		"%{wks.location}/Hazel/vendor",
-		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		-- "%{wks.location}/Hazel/vendor",
+		-- "%{IncludeDir.glm}",
+		-- "%{IncludeDir.entt}"
 	}
 
 	links
 	{
 		"Hazel"
 	}
+	filter "action:xcode4"
+		xcodebuildsettings {  ['ALWAYS_SEARCH_USER_PATHS'] = 'YES' }
+		sysincludedirs {
+		"Hazel/src",
+		-- "vendor/spdlog/include",
+		-- "vendor/GLFW/include",
+		-- "vendor/Glad/include",
+		-- "vendor/ImGui"
+		}
 
 	filter "system:windows"
 		systemversion "latest"
+
+	filter "system:macosx"
+        systemversion "latest"
 
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"

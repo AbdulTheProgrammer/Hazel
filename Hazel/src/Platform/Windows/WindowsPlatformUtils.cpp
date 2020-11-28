@@ -1,6 +1,6 @@
 #include "hzpch.h"
 #include "Hazel/Utils/PlatformUtils.h"
-
+#ifdef HZ_PLATFORM_WINDOWS
 #include <sstream>
 #include <commdlg.h>
 #include <GLFW/glfw3.h>
@@ -51,3 +51,5 @@ namespace Hazel {
 	}
 
 }
+
+#endif

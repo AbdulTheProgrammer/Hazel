@@ -11,7 +11,7 @@
 		#include <signal.h>
 		#define HZ_DEBUGBREAK() raise(SIGTRAP)
 	#else
-		#error "Platform doesn't support debugbreak yet!"
+		#define HZ_DEBUGBREAK() __builtin_trap()
 	#endif
 	#define HZ_ENABLE_ASSERTS
 #else
@@ -45,5 +45,5 @@ namespace Hazel {
 
 }
 
-#include "Hazel/Core/Log.h"
-#include "Hazel/Core/Assert.h"
+//#include "Hazel/Core/Log.h"
+//#include "Hazel/Core/Assert.h"

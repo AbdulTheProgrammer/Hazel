@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+	version = "1.0">
+	<FileRef
+		location = "group:Hazelnut/Hazelnut.xcodeproj">
+	</FileRef>
+	<Group
+		location = "container:"
+		name = "Dependencies">
+		<FileRef
+			location = "group:Hazel/vendor/GLFW/GLFW.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:Hazel/vendor/Glad/Glad.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:Hazel/vendor/imgui/ImGui.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:vendor/premake/Premake.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:Hazel/vendor/yaml-cpp/yaml-cpp.xcodeproj">
+		</FileRef>
+	</Group>
+	<FileRef
+		location = "group:Hazel/Hazel.xcodeproj">
+	</FileRef>
+	<FileRef
+		location = "group:Sandbox/Sandbox.xcodeproj">
+	</FileRef>
+</Workspace>
