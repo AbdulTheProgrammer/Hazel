@@ -45,5 +45,5 @@ namespace Hazel {
 
 }
 
-//#include "Hazel/Core/Log.h"
-//#include "Hazel/Core/Assert.h"
+#include "Hazel/Core/Log.h"
+#include "Hazel/Core/Assert.h"

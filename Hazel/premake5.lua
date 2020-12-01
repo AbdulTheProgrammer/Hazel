@@ -20,8 +20,8 @@ project "Hazel"
         xcodebuildsettings {  ['ALWAYS_SEARCH_USER_PATHS'] = 'YES' }
         sysincludedirs {
 			"src",
-			-- "vendor/spdlog/include",
-			-- "vendor/GLFW/include",
+			"vendor/spdlog/include",
+			"vendor/GLFW/include",
 			-- "vendor/Glad/include",
 			-- "vendor/ImGui"
         }
@@ -30,10 +30,16 @@ project "Hazel"
         files {
             "src/Hazel/Core/Application.h",
             "src/Hazel/Core/Application.cpp",
-            "src/Hazel/Core/Application.cpp",
+            "src/Hazel/Core/Window.h",
+            "src/Hazel/Core/Window.cpp",
             "src/Hazel/Core/EntryPoint.h",
+            "src/Hazel/Core/Log.h",
+            "src/Hazel/Core/Log.cpp",
+            "src/Hazel/Core/Assert.h",
             "src/Hazel/Core/Base.h",
             "src/Hazel/Core/PlatformDetection.h",
+            "src/Platform/Windows/WindowsWindow.cpp",
+            "src/Platform/Windows/WindowsWindow.h",
             "src/Hazel.h",
             -- "vendor/stb_image/**.h",
             -- "vendor/stb_image/**.cpp",
@@ -49,7 +55,7 @@ project "Hazel"
         includedirs
         {
             "src",
-            -- "%{IncludeDir.GLFW}",
+            "%{IncludeDir.GLFW}",
             -- "%{IncludeDir.Glad}",
             -- "%{IncludeDir.ImGui}",
             -- "%{IncludeDir.glm}",
@@ -58,14 +64,14 @@ project "Hazel"
             -- "%{IncludeDir.yaml_cpp}"
         }
 
-        -- links
-        -- {
-        --     "GLFW",
-        --     "Glad",
-        --     "ImGui",
-        --     "yaml-cpp",
-        --     "opengl32.lib",
-        -- }
+        links
+        {
+            "GLFW",
+            -- "Glad",
+            -- "ImGui",
+            -- "yaml-cpp",
+            -- "opengl32.lib",
+        }
 
     filter "system:macosx"
         systemversion "latest"

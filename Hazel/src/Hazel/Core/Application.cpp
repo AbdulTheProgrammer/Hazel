@@ -1,7 +1,7 @@
 #include "hzpch.h"
 #include "Hazel/Core/Application.h"
 
-//#include "Hazel/Core/Log.h"
+#include "Hazel/Core/Log.h"
 //
 //#include "Hazel/Renderer/Renderer.h"
 //
@@ -11,15 +11,15 @@
 
 namespace Hazel {
 
-//	Application* Application::s_Instance = nullptr;
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application(const std::string& name)
 	{
 //		HZ_PROFILE_FUNCTION();
 //
-//		HZ_CORE_ASSERT(!s_Instance, "Application already exists!");
-//		s_Instance = this;
-//		m_Window = Window::Create(WindowProps(name));
+		HZ_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+		m_Window = Window::Create(WindowProps(name));
 //		m_Window->SetEventCallback(HZ_BIND_EVENT_FN(Application::OnEvent));
 //
 //		Renderer::Init();
@@ -51,10 +51,10 @@ namespace Hazel {
 //		layer->OnAttach();
 //	}
 //
-//	void Application::Close()
-//	{
-//		m_Running = false;
-//	}
+	void Application::Close()
+	{
+		m_Running = false;
+	}
 //
 //	void Application::OnEvent(Event& e)
 //	{
@@ -76,8 +76,8 @@ namespace Hazel {
 	{
 //		HZ_PROFILE_FUNCTION();
 
-//		while (m_Running)
-//		{
+		while (m_Running)
+		{
 //			HZ_PROFILE_SCOPE("RunLoop");
 //
 //			float time = (float)glfwGetTime();
@@ -103,11 +103,11 @@ namespace Hazel {
 //				m_ImGuiLayer->End();
 //			}
 //
-//			m_Window->OnUpdate();
-//		}
-        while (true) {
-            std::cout << "hello world from game engine" << std::endl;
-        }
+			m_Window->OnUpdate();
+		}
+        // while (true) {
+        //     HZ_CORE_ERROR("Hello world from logging system");
+        // }
 	}
 
 //	bool Application::OnWindowClose(WindowCloseEvent& e)

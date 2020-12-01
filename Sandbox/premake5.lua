@@ -15,7 +15,7 @@ project "Sandbox"
 
 	includedirs
 	{
-		-- "%{wks.location}/Hazel/vendor/spdlog/include",
+		"%{wks.location}/Hazel/vendor/spdlog/include",
 		"%{wks.location}/Hazel/src",
 		-- "%{wks.location}/Hazel/vendor",
 		-- "%{IncludeDir.glm}",
@@ -30,8 +30,8 @@ project "Sandbox"
 		xcodebuildsettings {  ['ALWAYS_SEARCH_USER_PATHS'] = 'YES' }
 		sysincludedirs {
 		"Hazel/src",
-		-- "vendor/spdlog/include",
-		-- "vendor/GLFW/include",
+		"Hazel/vendor/spdlog/include",
+		"vendor/GLFW/include",
 		-- "vendor/Glad/include",
 		-- "vendor/ImGui"
 		}
@@ -40,7 +40,13 @@ project "Sandbox"
 		systemversion "latest"
 
 	filter "system:macosx"
-        systemversion "latest"
+				systemversion "latest"
+				links
+				{
+					"Cocoa.framework",
+					"IOKit.framework",
+					"QuartzCore.framework"
+				}
 
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
