@@ -2,18 +2,18 @@
 
 #include "Hazel.h"
 
-class ExampleLayer //: public Hazel::Layer
+class ExampleLayer : public Hazel::Layer
 {
 public:
 	ExampleLayer();
 	virtual ~ExampleLayer() = default;
 
-//	virtual void OnAttach() override;
-//	virtual void OnDetach() override;
-//
-//	void OnUpdate(Hazel::Timestep ts) override;
+	virtual void OnAttach() override;
+	virtual void OnDetach() override;
+
+	void OnUpdate(Hazel::Timestep ts) override;
 //	virtual void OnImGuiRender() override;
-//	void OnEvent(Hazel::Event& e) override;
+	void OnEvent(Hazel::Event& e) override;
 //private:
 //	Hazel::ShaderLibrary m_ShaderLibrary;
 //	Hazel::Ref<Hazel::Shader> m_Shader;

@@ -128,16 +128,16 @@ ExampleLayer::ExampleLayer()
 //	textureShader->SetInt("u_Texture", 0);
 }
 
-//void ExampleLayer::OnAttach()
-//{
-//}
+void ExampleLayer::OnAttach()
+{
+}
+
+void ExampleLayer::OnDetach()
+{
+}
 //
-//void ExampleLayer::OnDetach()
-//{
-//}
-//
-//void ExampleLayer::OnUpdate(Hazel::Timestep ts)
-//{
+void ExampleLayer::OnUpdate(Hazel::Timestep ts)
+{
 //	// Update
 //	m_CameraController.OnUpdate(ts);
 //
@@ -173,7 +173,7 @@ ExampleLayer::ExampleLayer()
 //	// Hazel::Renderer::Submit(m_Shader, m_VertexArray);
 //
 //	Hazel::Renderer::EndScene();
-//}
+}
 //
 //void ExampleLayer::OnImGuiRender()
 //{
@@ -182,7 +182,7 @@ ExampleLayer::ExampleLayer()
 //	ImGui::End();
 //}
 //
-//void ExampleLayer::OnEvent(Hazel::Event& e)
-//{
-//	m_CameraController.OnEvent(e);
-//}
+void ExampleLayer::OnEvent(Hazel::Event& e)
+{
+	//m_CameraController.OnEvent(e);
+}

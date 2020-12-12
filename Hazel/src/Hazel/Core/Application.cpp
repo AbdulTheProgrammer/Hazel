@@ -20,7 +20,7 @@ namespace Hazel {
 		HZ_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 		m_Window = Window::Create(WindowProps(name));
-//		m_Window->SetEventCallback(HZ_BIND_EVENT_FN(Application::OnEvent));
+		m_Window->SetEventCallback(HZ_BIND_EVENT_FN(Application::OnEvent));
 //
 //		Renderer::Init();
 //
@@ -35,42 +35,43 @@ namespace Hazel {
 //		Renderer::Shutdown();
 	}
 
-//	void Application::PushLayer(Layer* layer)
-//	{
-//		HZ_PROFILE_FUNCTION();
-//
-//		m_LayerStack.PushLayer(layer);
-//		layer->OnAttach();
-//	}
-//
-//	void Application::PushOverlay(Layer* layer)
-//	{
-//		HZ_PROFILE_FUNCTION();
-//
-//		m_LayerStack.PushOverlay(layer);
-//		layer->OnAttach();
-//	}
-//
+	void Application::PushLayer(Layer* layer)
+	{
+		HZ_PROFILE_FUNCTION();
+
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		HZ_PROFILE_FUNCTION();
+
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
+	}
+
 	void Application::Close()
 	{
 		m_Running = false;
 	}
 //
-//	void Application::OnEvent(Event& e)
-//	{
-//		HZ_PROFILE_FUNCTION();
-//
-//		EventDispatcher dispatcher(e);
-//		dispatcher.Dispatch<WindowCloseEvent>(HZ_BIND_EVENT_FN(Application::OnWindowClose));
-//		dispatcher.Dispatch<WindowResizeEvent>(HZ_BIND_EVENT_FN(Application::OnWindowResize));
-//
-//		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
-//		{
-//			if (e.Handled)
-//				break;
-//			(*it)->OnEvent(e);
-//		}
-//	}
+	void Application::OnEvent(Event& e)
+	{
+		HZ_PROFILE_FUNCTION();
+        HZ_CORE_INFO("{0}", e);
+        
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(HZ_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(HZ_BIND_EVENT_FN(Application::OnWindowResize));
+
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+		{
+			if (e.Handled)
+				break;
+			(*it)->OnEvent(e);
+		}
+	}
 
 	void Application::Run()
 	{
@@ -89,8 +90,8 @@ namespace Hazel {
 //				{
 //					HZ_PROFILE_SCOPE("LayerStack OnUpdate");
 //
-//					for (Layer* layer : m_LayerStack)
-//						layer->OnUpdate(timestep);
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(0);
 //				}
 //
 //				m_ImGuiLayer->Begin();
@@ -110,26 +111,26 @@ namespace Hazel {
         // }
 	}
 
-//	bool Application::OnWindowClose(WindowCloseEvent& e)
-//	{
-//		m_Running = false;
-//		return true;
-//	}
-//
-//	bool Application::OnWindowResize(WindowResizeEvent& e)
-//	{
-//		HZ_PROFILE_FUNCTION();
-//
-//		if (e.GetWidth() == 0 || e.GetHeight() == 0)
-//		{
-//			m_Minimized = true;
-//			return false;
-//		}
-//
-//		m_Minimized = false;
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		HZ_PROFILE_FUNCTION();
+
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		m_Minimized = false;
 //		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
-//
-//		return false;
-//	}
+
+		return false;
+	}
 
 }

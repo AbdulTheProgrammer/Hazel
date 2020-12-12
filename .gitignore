@@ -7,6 +7,7 @@ bin-int/
 *.log
 
 # Visual Studio files and folder
+.xcworkspace/
 .vs/
 .vscode/
 **.sln
