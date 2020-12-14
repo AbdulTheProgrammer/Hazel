@@ -7,7 +7,8 @@
 //
 //#include "Hazel/Core/Input.h"
 //
-//#include <GLFW/glfw3.h>
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Hazel {
 
@@ -24,8 +25,8 @@ namespace Hazel {
 //
 //		Renderer::Init();
 //
-//		m_ImGuiLayer = new ImGuiLayer();
-//		PushOverlay(m_ImGuiLayer);
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -80,35 +81,31 @@ namespace Hazel {
 		while (m_Running)
 		{
 //			HZ_PROFILE_SCOPE("RunLoop");
-//
-//			float time = (float)glfwGetTime();
-//			Timestep timestep = time - m_LastFrameTime;
-//			m_LastFrameTime = time;
-//
-//			if (!m_Minimized)
-//			{
-//				{
-//					HZ_PROFILE_SCOPE("LayerStack OnUpdate");
-//
+            glClearColor(1,0,1,1);
+            glClear(GL_COLOR_BUFFER_BIT);
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
+			if (!m_Minimized)
+			{
+				{
+				// 	HZ_PROFILE_SCOPE("LayerStack OnUpdate");
+
 					for (Layer* layer : m_LayerStack)
 						layer->OnUpdate(0);
-//				}
-//
-//				m_ImGuiLayer->Begin();
-//				{
-//					HZ_PROFILE_SCOPE("LayerStack OnImGuiRender");
-//
-//					for (Layer* layer : m_LayerStack)
-//						layer->OnImGuiRender();
-//				}
-//				m_ImGuiLayer->End();
-//			}
-//
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					// HZ_PROFILE_SCOPE("LayerStack OnImGuiRender");
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 			m_Window->OnUpdate();
 		}
-        // while (true) {
-        //     HZ_CORE_ERROR("Hello world from logging system");
-        // }
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)

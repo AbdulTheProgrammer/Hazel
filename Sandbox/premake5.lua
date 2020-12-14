@@ -17,7 +17,7 @@ project "Sandbox"
 	{
 		"%{wks.location}/Hazel/vendor/spdlog/include",
 		"%{wks.location}/Hazel/src",
-		-- "%{wks.location}/Hazel/vendor",
+		"%{wks.location}/Hazel/vendor",
 		-- "%{IncludeDir.glm}",
 		-- "%{IncludeDir.entt}"
 	}
@@ -32,8 +32,8 @@ project "Sandbox"
 		"Hazel/src",
 		"Hazel/vendor/spdlog/include",
 		"vendor/GLFW/include",
-		-- "vendor/Glad/include",
-		-- "vendor/ImGui"
+		"vendor/Glad/include",
+		"vendor/ImGui"
 		}
 
 	filter "system:windows"
@@ -43,7 +43,10 @@ project "Sandbox"
 				systemversion "latest"
 				links
 				{
+					"AppKit.framework",
 					"Cocoa.framework",
+					"CoreGraphics.framework",
+					"OpenGL.framework",
 					"IOKit.framework",
 					"QuartzCore.framework"
 				}

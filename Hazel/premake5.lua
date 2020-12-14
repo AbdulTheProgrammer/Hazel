@@ -22,31 +22,22 @@ project "Hazel"
 			"src",
 			"vendor/spdlog/include",
 			"vendor/GLFW/include",
-			-- "vendor/Glad/include",
-			-- "vendor/ImGui"
+			"vendor/Glad/include",
+            "vendor/ImGui",
         }
     
     filter {}
         files {
-            "src/Hazel/Core/Application.h",
-            "src/Hazel/Core/Application.cpp",
-            "src/Hazel/Core/Window.h",
-            "src/Hazel/Core/Window.cpp",
-            "src/Hazel/Core/EntryPoint.h",
-            "src/Hazel/Core/Log.h",
-            "src/Hazel/Core/Log.cpp",
-            "src/Hazel/Core/Assert.h",
-            "src/Hazel/Core/Base.h",
-            "src/Hazel/Core/Layer.h",
-            "src/Hazel/Core/Layer.cpp",
-            "src/Hazel/Core/LayerStack.cpp",
-            "src/Hazel/Core/LayerStack.h",
-            "src/Hazel/Core/Base.h",
-            "src/Hazel/Core/PlatformDetection.h",
+            "src/Hazel/Core/*",
             "src/Platform/Windows/WindowsWindow.cpp",
             "src/Platform/Windows/WindowsWindow.h",
+            "src/Platform/OpenGL/OpenGLContext.h",
+            "src/Platform/OpenGL/OpenGLContext.cpp",
+            "src/Hazel/Renderer/GraphicsContext.h",
+            "src/Hazel/Renderer/GraphicsContext.cpp",
             "src/Hazel.h",
             "src/Hazel/Events/*",
+            "src/Hazel/imGui/*",
             -- "vendor/stb_image/**.h",
             -- "vendor/stb_image/**.cpp",
             -- "vendor/glm/glm/**.hpp",
@@ -62,8 +53,8 @@ project "Hazel"
         {
             "src",
             "%{IncludeDir.GLFW}",
-            -- "%{IncludeDir.Glad}",
-            -- "%{IncludeDir.ImGui}",
+            "%{IncludeDir.Glad}",
+            "%{IncludeDir.ImGui}",
             -- "%{IncludeDir.glm}",
             -- "%{IncludeDir.stb_image}",
             -- "%{IncludeDir.entt}",
@@ -73,10 +64,11 @@ project "Hazel"
         links
         {
             "GLFW",
-            -- "Glad",
-            -- "ImGui",
+            "Glad",
+            "ImGui",
             -- "yaml-cpp",
             -- "opengl32.lib",
+            -- "glfw3.lib"
         }
 
     filter "system:macosx"
@@ -88,9 +80,13 @@ project "Hazel"
 		}
 		links
 		{
-			"Cocoa.framework",
+            "AppKit.framework",
+            "Cocoa.framework",
+            "CoreVideo.framework",
+            "CoreGraphics.framework",
+			"OpenGL.framework",
 			"IOKit.framework",
-			"QuartzCore.framework"
+            "QuartzCore.framework",
 		}
 
 	filter "system:windows"

@@ -9,7 +9,7 @@
 
 //#include "Hazel/Renderer/Renderer.h"
 
-// #include "Platform/OpenGL/OpenGLContext.h"
+ #include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Hazel {
 
@@ -62,9 +62,9 @@ namespace Hazel {
 			++s_GLFWWindowCount;
 		}
 
-//		m_Context = GraphicsContext::Create(m_Window);
+        m_Context = GraphicsContext::Create(m_Window);
         glfwMakeContextCurrent(m_Window);
-//		m_Context->Init();
+        m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);

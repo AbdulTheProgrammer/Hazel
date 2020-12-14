@@ -9,7 +9,7 @@
 //
 //#include "Hazel/Core/Timestep.h"
 //
-//#include "Hazel/ImGui/ImGuiLayer.h"
+#include "Hazel/ImGui/ImGuiLayer.h"
 
 int main(int argc, char** argv);
 
@@ -29,9 +29,9 @@ namespace Hazel {
 		Window& GetWindow() { return *m_Window; }
 //
 		void Close();
-//
-//		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
-//
+
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
 		static Application& Get() { return *s_Instance; }
 	private:
 		void Run();
@@ -39,11 +39,11 @@ namespace Hazel {
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
 		std::unique_ptr<Window> m_Window;
-//		ImGuiLayer* m_ImGuiLayer;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;
-//		float m_LastFrameTime = 0.0f;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);
