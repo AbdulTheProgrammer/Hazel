@@ -2,11 +2,11 @@
 #include "Hazel/Core/Application.h"
 
 #include "Hazel/Core/Log.h"
-//
+
 //#include "Hazel/Renderer/Renderer.h"
-//
-//#include "Hazel/Core/Input.h"
-//
+
+#include "Hazel/Core/Input.h"
+
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
@@ -56,12 +56,12 @@ namespace Hazel {
 	{
 		m_Running = false;
 	}
-//
+
 	void Application::OnEvent(Event& e)
 	{
 		HZ_PROFILE_FUNCTION();
         HZ_CORE_INFO("{0}", e);
-        
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(HZ_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(HZ_BIND_EVENT_FN(Application::OnWindowResize));
@@ -86,7 +86,8 @@ namespace Hazel {
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
-
+			auto pos = Input::GetMousePosition();
+			HZ_CORE_INFO("Mouse Position: {0}, {1}", pos[0], pos[1]);
 			if (!m_Minimized)
 			{
 				{

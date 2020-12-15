@@ -31,6 +31,7 @@ project "Hazel"
             "src/Hazel/Core/*",
             "src/Platform/Windows/WindowsWindow.cpp",
             "src/Platform/Windows/WindowsWindow.h",
+            "src/Platform/Windows/WindowsInput.cpp",
             "src/Platform/OpenGL/OpenGLContext.h",
             "src/Platform/OpenGL/OpenGLContext.cpp",
             "src/Hazel/Renderer/GraphicsContext.h",
@@ -40,8 +41,8 @@ project "Hazel"
             "src/Hazel/imGui/*",
             -- "vendor/stb_image/**.h",
             -- "vendor/stb_image/**.cpp",
-            -- "vendor/glm/glm/**.hpp",
-            -- "vendor/glm/glm/**.inl",
+            "vendor/glm/glm/**.hpp",
+            "vendor/glm/glm/**.inl",
         }
 
         defines {
@@ -55,7 +56,7 @@ project "Hazel"
             "%{IncludeDir.GLFW}",
             "%{IncludeDir.Glad}",
             "%{IncludeDir.ImGui}",
-            -- "%{IncludeDir.glm}",
+            "%{IncludeDir.glm}",
             -- "%{IncludeDir.stb_image}",
             -- "%{IncludeDir.entt}",
             -- "%{IncludeDir.yaml_cpp}"

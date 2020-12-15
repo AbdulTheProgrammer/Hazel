@@ -18,7 +18,7 @@ project "Sandbox"
 		"%{wks.location}/Hazel/vendor/spdlog/include",
 		"%{wks.location}/Hazel/src",
 		"%{wks.location}/Hazel/vendor",
-		-- "%{IncludeDir.glm}",
+		"%{IncludeDir.glm}",
 		-- "%{IncludeDir.entt}"
 	}
 
@@ -29,11 +29,11 @@ project "Sandbox"
 	filter "action:xcode4"
 		xcodebuildsettings {  ['ALWAYS_SEARCH_USER_PATHS'] = 'YES' }
 		sysincludedirs {
-		"Hazel/src",
-		"Hazel/vendor/spdlog/include",
-		"vendor/GLFW/include",
-		"vendor/Glad/include",
-		"vendor/ImGui"
+			"Hazel/src",
+			"Hazel/vendor/spdlog/include",
+			"vendor/GLFW/include",
+			"vendor/Glad/include",
+			"vendor/ImGui"
 		}
 
 	filter "system:windows"
