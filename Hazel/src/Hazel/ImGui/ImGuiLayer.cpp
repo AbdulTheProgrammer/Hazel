@@ -33,10 +33,10 @@ namespace Hazel {
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
-//		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
-//		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-//		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
-//		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
+		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
 		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcons;
 		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
 
@@ -55,7 +55,7 @@ namespace Hazel {
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
 
-		//SetDarkThemeColors();
+		SetDarkThemeColors();
 
 		Application& app = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
@@ -82,6 +82,12 @@ namespace Hazel {
 			e.Handled |= e.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;
 		}
 	}
+
+    void ImGuiLayer::OnImGuiRender()
+    {
+        static bool show = true;
+        ImGui::ShowDemoWindow(&show);
+    }
 	
 	void ImGuiLayer::Begin()
 	{
@@ -98,8 +104,6 @@ namespace Hazel {
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
-        static bool show = true;
-        ImGui::ShowDemoWindow(&show);
 		// Rendering
 		ImGui::Render();
 		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());

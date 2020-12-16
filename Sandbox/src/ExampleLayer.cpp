@@ -1,9 +1,9 @@
 #include "ExampleLayer.h"
 
-//#include "imgui/imgui.h"
+#include "imgui/imgui.h"
 //
-//#include <glm/gtc/matrix_transform.hpp>
-//#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 ExampleLayer::ExampleLayer() 
 	//: Layer("ExampleLayer"), m_CameraController(1280.0f / 720.0f)
@@ -175,12 +175,13 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts)
 //	Hazel::Renderer::EndScene();
 }
 //
-//void ExampleLayer::OnImGuiRender()
-//{
-//	ImGui::Begin("Settings");
+void ExampleLayer::OnImGuiRender()
+{
+	ImGui::Begin("Settings");
 //	ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
-//	ImGui::End();
-//}
+    ImGui::Text("Hello World!");
+	ImGui::End();
+}
 //
 void ExampleLayer::OnEvent(Hazel::Event& e)
 {

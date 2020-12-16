@@ -11,12 +11,12 @@
 //
 //#include "Hazel/Core/Timestep.h"
 //
-//#include "Hazel/Core/Input.h"
-//#include "Hazel/Core/KeyCodes.h"
-//#include "Hazel/Core/MouseCodes.h"
+#include "Hazel/Core/Input.h"
+#include "Hazel/Core/KeyCodes.h"
+#include "Hazel/Core/MouseCodes.h"
 //#include "Hazel/Renderer/OrthographicCameraController.h"
 //
-//#include "Hazel/ImGui/ImGuiLayer.h"
+#include "Hazel/ImGui/ImGuiLayer.h"
 //
 //#include "Hazel/Scene/Scene.h"
 //#include "Hazel/Scene/Entity.h"

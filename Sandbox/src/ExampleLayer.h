@@ -12,7 +12,7 @@ public:
 	virtual void OnDetach() override;
 
 	void OnUpdate(Hazel::Timestep ts) override;
-//	virtual void OnImGuiRender() override;
+	virtual void OnImGuiRender() override;
 	void OnEvent(Hazel::Event& e) override;
 //private:
 //	Hazel::ShaderLibrary m_ShaderLibrary;
