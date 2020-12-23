@@ -43,7 +43,7 @@ namespace Hazel {
 		m_Data.Height = props.Height;
 
 		HZ_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
-
+        
 		if (s_GLFWWindowCount == 0)
 		{
 			HZ_PROFILE_SCOPE("glfwInit");
@@ -51,6 +51,11 @@ namespace Hazel {
 			HZ_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
+        
+        glfwWindowHint (GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint (GLFW_CONTEXT_VERSION_MINOR, 1);
+        glfwWindowHint (GLFW_OPENGL_FORWARD_COMPAT, 1);
+        glfwWindowHint (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 		{
 			HZ_PROFILE_SCOPE("glfwCreateWindow");
@@ -63,7 +68,6 @@ namespace Hazel {
 		}
 
         m_Context = GraphicsContext::Create(m_Window);
-        glfwMakeContextCurrent(m_Window);
         m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);

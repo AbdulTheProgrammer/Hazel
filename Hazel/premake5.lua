@@ -69,7 +69,7 @@ project "Hazel"
             "ImGui",
             -- "yaml-cpp",
             -- "opengl32.lib",
-            -- "glfw3.lib"
+            "glfw3.lib"
         }
 
     filter "system:macosx"

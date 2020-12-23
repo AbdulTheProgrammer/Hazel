@@ -1,8 +1,8 @@
 #include "hzpch.h"
 #include "Platform/OpenGL/OpenGLContext.h"
 
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace Hazel {
 
@@ -15,7 +15,7 @@ namespace Hazel {
 	void OpenGLContext::Init()
 	{
 		// HZ_PROFILE_FUNCTION();
-
+        
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		HZ_CORE_ASSERT(status, "Failed to initialize Glad!");

@@ -3,14 +3,7 @@
 
 #include <imgui.h>
 #include <examples/imgui_impl_glfw.h>
-// OpenGL is deprecated on most Apple Platforms
-// so best to use the older version for now to maintain
-// compatibility especially with MBPs w/ integrated graphics cards
-#if TARGET_OS_MAC
-#include <examples/imgui_impl_opengl2.h>
-#else
 #include <examples/imgui_impl_opengl3.h>
-#endif
 
 #include "Hazel/Core/Application.h"
 
@@ -61,14 +54,14 @@ namespace Hazel {
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
 		// Setup Platform/Renderer bindings
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL2_Init();
+		ImGui_ImplOpenGL3_Init();
 	}
 
 	void ImGuiLayer::OnDetach()
 	{
 		HZ_PROFILE_FUNCTION();
 
-		ImGui_ImplOpenGL2_Shutdown();
+		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
 	}
@@ -92,7 +85,7 @@ namespace Hazel {
 	void ImGuiLayer::Begin()
 	{
 		HZ_PROFILE_FUNCTION();
-        ImGui_ImplOpenGL2_NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 	}
@@ -106,7 +99,7 @@ namespace Hazel {
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
 		// Rendering
 		ImGui::Render();
-		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
